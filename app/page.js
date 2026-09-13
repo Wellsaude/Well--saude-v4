@@ -6,7 +6,7 @@ const sp=useSearchParams();
 const ref=sp.get("ref")||"WILSONADM";
 return(
 <div style={{padding:20,textAlign:"center",fontFamily:"Arial"}}>
-<h1>Well Saude V4 - R$43,50</h1>
+<h1>Well Saude 24h - R$43,50</h1>
 <p style={{color:"green",fontWeight:"bold"}}>8,33 pts = R$5 cashback em pontos</p>
 <div style={{background:"#f0fff0",padding:15,borderRadius:10,textAlign:"left"}}>
 <b>Voce ganha pontos que pode usar como cashback para:</b>

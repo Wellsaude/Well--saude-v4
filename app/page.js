@@ -10,7 +10,7 @@ return(
 <div style={{background:"#f0fff0",padding:15,borderRadius:10,textAlign:"left"}}>
 <b>Voce ganha pontos que pode usar como cashback para:</b>
 <p>1- Pagar ou descontar sua mensalidade</p>
-<p>2- Comprar no catalogo dropshipping</p>
+<p>2- Comprar no catalogo</p>
 <p>3- Acumular para limite no futuro cartao Well Saude</p>
 <hr/>
 <p>2o mes em dia: 8,33 pts = R$5</p>
@@ -21,4 +21,4 @@ return(
 <a href={"/assinar?ref="+ref} style={{background:"green",color:"white",padding:15,borderRadius:8,display:"inline-block",marginTop:15,textDecoration:"none"}}>ASSINAR R$43,50</a>
 </div>
 );
-  }
+}

@@ -1,6 +1,7 @@
 "use client";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-export default function Home(){
+function Conteudo(){
 const sp=useSearchParams();
 const ref=sp.get("ref")||"WILSONADM";
 return(
@@ -22,3 +23,6 @@ return(
 </div>
 );
 }
+export default function Home(){
+return <Suspense><Conteudo/></Suspense>;
+  }

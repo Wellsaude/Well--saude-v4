@@ -1,2 +1,2 @@
-import { redirect } from 'next/navigation'
-export default function Home(){return redirect('/assinar')}
+// ESSE E DO ASSINAR - FORMULARIO
+"use client"

@@ -1,5 +1,2 @@
 import { redirect } from 'next/navigation'
-
-export default function Home() {
-  redirect('/cadastro')
-}
+export default function Home(){ redirect('/assinar') }

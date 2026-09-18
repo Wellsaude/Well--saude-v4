@@ -1,31 +1,38 @@
 import { createClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 
-// VALORES DO SEU PROJETO SUPABASE
+// Variáveis de ambiente do Supabase
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
-// CLIENT PARA COMPONENTES DE SERVIDOR
+// Cliente para Componentes de Servidor
 export async function createServerClient() {
   const cookieStore = await cookies()
-  
+
   return createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll()
-      },
-      setAll(cookiesToSet) {
-        try {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options)
-          )
-        } catch {}
-      },
-    },
+    auth: {
+      storage: {
+        getAll() {
+          return cookieStore.getAll().map(c => ({
+            name: c.name,
+            value: c.value
+          }))
+        },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options)
+            })
+          } catch (err) {
+            // Ignora erro se rodar em componente de servidor de leitura
+          }
+        }
+      }
+    }
   })
 }
 
-// CLIENT PARA COMPONENTES DE CLIENTE
+// Cliente para Componentes de Cliente
 export function createClientComponentClient() {
   return createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 }
